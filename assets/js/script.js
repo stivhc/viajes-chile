@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    /*Contacto Tooltip*/
+    /*Tooltip*/
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })

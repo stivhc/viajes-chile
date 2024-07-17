@@ -1,15 +1,38 @@
+/* Nav Bar*/
 .nav-link {
     color: white;
+    font-family: "Oswald", sans-serif;
 }
-body{
+
+/* Body */
+body {
     background-color: black;
     color: white;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
-#footer{
+/*Sección de presentación*/
+#quienes-somos {
+    font-family: "Oswald", sans-serif;
+}
+
+/* Titulo Destacados */
+#Destacados1 {
+    font-family: "Oswald", sans-serif;
+}
+
+/* Titulo Contacto */
+#Contacto {
+    font-family: "Oswald", sans-serif;
+}
+
+/* Footer */
+#footer {
     background-color: #198754;
+    font-family: "Oswald", sans-serif;
 }
 
+/* Iconos del Footer*/
 #footer .github {
     color: white;
 }
