@@ -76,7 +76,7 @@
 
   <!-- ¿Quiénes Somos? -->
 
-  <section id="quienes-somos" class="container my-5 p-5">
+  <section id="quienes-somos" class="container my-5 p-5 d-none d-sm-block d-sm-none d-md-block d-md-none d-lg-block">
     <h2 class="fw-bold text-light mb-3 text-center">¿Quiénes Somos?</h2>
     <div class="row text-center">
       <div class="col-12 col-sm-4 py-2">
@@ -213,21 +213,20 @@
         <textarea class="form-control" placeholder="Escribe aquí tu mensaje"></textarea>
       </div>
 
-      <div class="my-3 text-start">
-        <button class="btn btn-info bg-success text-light">Enviar</button>
-      </div>
+      <div id="correo" class="my-3 text-start"></div>
+        <button type="button" class="btn btn-info bg-success text-light" data-toggle="tooltip" data-placement="left" title="Enviar un correo electrónico"
+        id="correoalerta">Enviar</button>
     </form>
   </section>
-
 
   <footer id="footer">
     <div class="container-fluid">
       <div class="row p-5">
         <div class="col-6 fw-bold">VIAJES CHILE</div>
         <div class="col-6 text-end">
-          <a class="github" href="https://github.com/" target="_blank"><i class="fa-brands fa-github fa-2x"></i></a>
-          <a class="x" href="https://x.com/home" target="_blank"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
-          <a class="linkedin" href="https://www.linkedin.com/feed/" target="_blank"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+          <a class="github" href="https://github.com/" target="_blank" data-bs-toggle="mensaje" title="Github"><i class="fa-brands fa-github fa-2x"></i></a>
+          <a class="x" href="https://x.com/home" target="_blank" data-bs-toggle="mensaje" title="X"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
+          <a class="linkedin" href="https://www.linkedin.com/feed/" target="_blank" data-bs-toggle="mensaje" title="Linkedin"><i class="fa-brands fa-linkedin fa-2x"></i></a>
         </div>
       </div>
     </div>
