@@ -1,8 +1,23 @@
+.nav-link {
+    color: white;
+}
 body{
     background-color: black;
     color: white;
 }
 
 #footer{
-    background-color: #00cae9;
+    background-color: #198754;
+}
+
+#footer .github {
+    color: white;
+}
+
+#footer .x {
+    color: white;
+}
+
+#footer .linkedin {
+    color: white;
 }
