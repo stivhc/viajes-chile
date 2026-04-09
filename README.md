@@ -1,6 +1,7 @@
 # Viajes Chile — Django
 
 ## Requisitos
+
 - Python 3.10+
 - PostgreSQL 14+
 
@@ -86,6 +87,7 @@ viajes_chile/
 ```
 
 ## Funcionalidades
+
 - Página principal con carrusel animado, sección "Quiénes Somos", destinos destacados y formulario de contacto
 - Registro de usuarios con PostgreSQL
 - Login / Logout
