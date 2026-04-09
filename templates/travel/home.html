@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Viajes Chile — Descubre el país{% endblock %}
+
+{% block content %}
+
+<section id="inicio" class="hero">
+    <div class="hero-slides">
+        <div class="hero-slide">
+            <img src="{% static 'img/carousel1.jpg' %}" alt="Torres del Paine">
+        </div>
+        <div class="hero-slide">
+            <img src="{% static 'img/carousel2.jpg' %}" alt="Desierto de Atacama">
+        </div>
+        <div class="hero-slide">
+            <img src="{% static 'img/carousel3.jpg' %}" alt="Salar de Atacama">
+        </div>
+    </div>
+
+    <div class="hero-content">
+        <p class="hero-eyebrow">Descubre Chile</p>
+        <h1 class="hero-title">Un país de <em>paisajes</em> infinitos</h1>
+        <p class="hero-subtitle">Desde la Patagonia hasta el desierto más árido del mundo, Chile te espera.</p>
+    </div>
+
+    <div class="hero-controls">
+        <button class="hero-btn hero-prev" aria-label="Anterior">&#8592;</button>
+        <button class="hero-btn hero-next" aria-label="Siguiente">&#8594;</button>
+    </div>
+
+    <div class="hero-dots">
+        <button class="hero-dot active" aria-label="Slide 1"></button>
+        <button class="hero-dot" aria-label="Slide 2"></button>
+        <button class="hero-dot" aria-label="Slide 3"></button>
+    </div>
+</section>
+
+<section id="quienes-somos">
+    <div class="about-grid">
+        <div class="about-text">
+            <p class="section-label">Nuestra historia</p>
+            <h2 class="section-title">Viajes diseñados con <em>propósito</em></h2>
+            <p>Somos una agencia chilena comprometida con el turismo responsable y la experiencia auténtica. Llevamos más de una década conectando viajeros con los rincones más extraordinarios de Chile.</p>
+            <p>Cada itinerario es curado a mano, priorizando el contacto real con el territorio, las comunidades locales y la naturaleza en su estado más puro.</p>
+            <a href="#contacto" class="btn-primary" style="margin-top:1rem;">Contáctanos</a>
+        </div>
+        <div class="about-features">
+            <div class="about-feature">
+                <div class="about-feature-icon"><i class="fa-solid fa-plane"></i></div>
+                <h4>Nuestros Viajes</h4>
+                <p>Experiencias únicas diseñadas para cada tipo de viajero, desde la aventura extrema hasta el turismo cultural.</p>
+            </div>
+            <div class="about-feature">
+                <div class="about-feature-icon"><i class="fa-solid fa-mountain"></i></div>
+                <h4>Lugares Únicos</h4>
+                <p>Acceso a destinos remotos y poco explorados que solo conocemos gracias a años de trabajo en terreno.</p>
+            </div>
+            <div class="about-feature">
+                <div class="about-feature-icon"><i class="fa-solid fa-route"></i></div>
+                <h4>Recorridos</h4>
+                <p>Rutas pensadas para maximizar la experiencia minimizando el impacto ambiental y cultural.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="destacados">
+    <div class="featured-header">
+        <div>
+            <p class="section-label">Lo mejor de Chile</p>
+            <h2 class="section-title">Destinos <em>destacados</em></h2>
+        </div>
+    </div>
+
+    {% if featured %}
+    <div class="featured-grid">
+        {% for dest in featured %}
+        <div class="featured-card">
+            {% if dest.image %}
+            <img class="featured-card-img" src="{{ dest.image.url }}" alt="{{ dest.title }}">
+            {% endif %}
+            <div class="featured-card-body">
+                <p class="featured-card-region">{{ dest.region }}</p>
+                <h3 class="featured-card-title">{{ dest.title }}</h3>
+                <p class="featured-card-desc">{{ dest.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="static-featured-grid">
+        <div class="featured-card">
+            <img class="featured-card-img" src="{% static 'img/card1.jpg' %}" alt="Torres del Paine">
+            <div class="featured-card-body">
+                <p class="featured-card-region">Patagonia</p>
+                <h3 class="featured-card-title">Torres del Paine</h3>
+                <p class="featured-card-desc">Uno de los parques nacionales más espectaculares del mundo, con glaciares, lagos turquesa y las icónicas torres de granito.</p>
+            </div>
+        </div>
+        <div class="featured-card">
+            <img class="featured-card-img" src="{% static 'img/card2.jpg' %}" alt="Desierto de Atacama">
+            <div class="featured-card-body">
+                <p class="featured-card-region">Norte Grande</p>
+                <h3 class="featured-card-title">Desierto de Atacama</h3>
+                <p class="featured-card-desc">El desierto más árido del planeta ofrece paisajes lunares, géiseres al amanecer y los cielos estrellados más nítidos de la Tierra.</p>
+            </div>
+        </div>
+        <div class="featured-card">
+            <img class="featured-card-img" src="{% static 'img/card3.jpg' %}" alt="Isla de Pascua">
+            <div class="featured-card-body">
+                <p class="featured-card-region">Polinesia Chilena</p>
+                <h3 class="featured-card-title">Isla de Pascua</h3>
+                <p class="featured-card-desc">Rapa Nui y sus enigmáticos moáis: una cultura viva en el punto más remoto e impresionante del Pacífico Sur.</p>
+            </div>
+        </div>
+        <div class="featured-card">
+            <img class="featured-card-img" src="{% static 'img/card4.jpg' %}" alt="Bosque Valdiviano">
+            <div class="featured-card-body">
+                <p class="featured-card-region">Los Ríos</p>
+                <h3 class="featured-card-title">Bosque Valdiviano</h3>
+                <p class="featured-card-desc">Selva templada única en el mundo, con helechos milenarios, volcanes nevados y ríos cristalinos de aguas salvajes.</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</section>
+
+<section id="contacto">
+    <div class="contact-inner">
+        <div class="contact-info">
+            <p class="section-label">Escríbenos</p>
+            <h2 class="section-title">¿Listo para tu próxima <em>aventura</em>?</h2>
+            <p>Cuéntanos qué tipo de experiencia buscas y nuestro equipo diseñará un itinerario a tu medida. Respondemos en menos de 24 horas.</p>
+            <div class="contact-detail">
+                <span>Email</span>
+                <span>contacto@viajeschile.cl</span>
+            </div>
+            <div class="contact-detail">
+                <span>Teléfono</span>
+                <span>+56 2 2345 6789</span>
+            </div>
+            <div class="contact-detail">
+                <span>Dirección</span>
+                <span>Av. Providencia 1234, Santiago</span>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <input type="hidden" name="contact_submit" value="1">
+                {% for field in contact_form %}
+                <div class="form-group">
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="form-errors">
+                        {% for error in field.errors %}
+                        <span class="form-error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn-primary" style="width:100%;padding:0.85rem;font-size:0.8rem;">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

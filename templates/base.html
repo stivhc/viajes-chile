@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Viajes Chile{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="nav">
+    <a href="{% url 'home' %}" class="nav-brand">
+        <img src="{% static 'img/viajes.svg' %}" alt="Viajes Chile">
+        Viajes Chile
+    </a>
+    <ul class="nav-links">
+        <li><a href="{% url 'home' %}#inicio">Inicio</a></li>
+        <li><a href="{% url 'home' %}#quienes-somos">Quiénes Somos</a></li>
+        <li><a href="{% url 'home' %}#destacados">Destacados</a></li>
+        <li><a href="{% url 'home' %}#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-auth">
+        {% if user.is_authenticated %}
+            <span class="user-welcome">Hola, {{ user.first_name|default:user.username }}</span>
+            <a href="{% url 'logout' %}" class="btn-ghost">Salir</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn-ghost">Ingresar</a>
+            <a href="{% url 'register' %}" class="btn-primary">Registrarse</a>
+        {% endif %}
+    </div>
+    <button class="hamburger" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</nav>
+
+{% if messages %}
+<div class="messages-container">
+    {% for message in messages %}
+    <div class="message {% if message.tags == 'error' %}error{% endif %}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<footer>
+    <span class="footer-brand">Viajes Chile</span>
+    <span class="footer-copy">&copy; 2024 Viajes Chile. Todos los derechos reservados.</span>
+    <div class="footer-social">
+        <a href="https://github.com/" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://x.com/" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

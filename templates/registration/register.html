@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Crear cuenta — Viajes Chile{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-visual">
+        <img src="{% static 'img/carousel1.jpg' %}" alt="Torres del Paine">
+        <div class="auth-visual-text">
+            <h2>Empieza tu<br>aventura hoy</h2>
+            <p>Únete a miles de viajeros que ya exploran Chile con nosotros.</p>
+        </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;padding:2rem;">
+        <div class="auth-form-panel">
+            <p class="section-label">Nueva cuenta</p>
+            <h1>Regístrate</h1>
+            <p>Crea tu cuenta para guardar destinos y recibir ofertas exclusivas.</p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="{{ form.first_name.id_for_label }}">Nombre</label>
+                        <input type="text" name="first_name" id="{{ form.first_name.id_for_label }}"
+                               class="form-control" placeholder="Juan"
+                               value="{{ form.first_name.value|default:'' }}">
+                        {% for error in form.first_name.errors %}
+                        <span class="form-error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="{{ form.last_name.id_for_label }}">Apellido</label>
+                        <input type="text" name="last_name" id="{{ form.last_name.id_for_label }}"
+                               class="form-control" placeholder="Pérez"
+                               value="{{ form.last_name.value|default:'' }}">
+                        {% for error in form.last_name.errors %}
+                        <span class="form-error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Usuario</label>
+                    <input type="text" name="username" id="{{ form.username.id_for_label }}"
+                           class="form-control" placeholder="juan.perez"
+                           value="{{ form.username.value|default:'' }}">
+                    {% for error in form.username.errors %}
+                    <span class="form-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="{{ form.email.id_for_label }}">Correo electrónico</label>
+                    <input type="email" name="email" id="{{ form.email.id_for_label }}"
+                           class="form-control" placeholder="juan@email.com"
+                           value="{{ form.email.value|default:'' }}">
+                    {% for error in form.email.errors %}
+                    <span class="form-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="{{ form.password1.id_for_label }}">Contraseña</label>
+                    <input type="password" name="password1" id="{{ form.password1.id_for_label }}"
+                           class="form-control" placeholder="Mínimo 8 caracteres">
+                    {% for error in form.password1.errors %}
+                    <span class="form-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="{{ form.password2.id_for_label }}">Confirmar contraseña</label>
+                    <input type="password" name="password2" id="{{ form.password2.id_for_label }}"
+                           class="form-control" placeholder="Repite tu contraseña">
+                    {% for error in form.password2.errors %}
+                    <span class="form-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {% if form.non_field_errors %}
+                <div class="form-errors" style="margin-bottom:1rem;">
+                    {% for error in form.non_field_errors %}
+                    <span class="form-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <button type="submit" class="btn-primary" style="width:100%;padding:0.85rem;font-size:0.8rem;">
+                    Crear cuenta
+                </button>
+            </form>
+
+            <p class="auth-link">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

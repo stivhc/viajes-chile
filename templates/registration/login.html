@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ingresar — Viajes Chile{% endblock %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-visual">
+        <img src="{% static 'img/carousel2.jpg' %}" alt="Atacama">
+        <div class="auth-visual-text">
+            <h2>Bienvenido<br>de vuelta</h2>
+            <p>Chile siempre tiene algo nuevo por descubrir.</p>
+        </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:center;padding:2rem;">
+        <div class="auth-form-panel">
+            <p class="section-label">Acceso</p>
+            <h1>Iniciar sesión</h1>
+            <p>Ingresa a tu cuenta para continuar explorando.</p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label class="form-label" for="id_username">Usuario</label>
+                    <input type="text" name="username" id="id_username"
+                           class="form-control" placeholder="Tu nombre de usuario" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="id_password">Contraseña</label>
+                    <input type="password" name="password" id="id_password"
+                           class="form-control" placeholder="Tu contraseña">
+                </div>
+
+                {% if form.errors %}
+                <div class="form-errors" style="margin-bottom:1rem;">
+                    <span class="form-error">Usuario o contraseña incorrectos.</span>
+                </div>
+                {% endif %}
+
+                <button type="submit" class="btn-primary" style="width:100%;padding:0.85rem;font-size:0.8rem;">
+                    Ingresar
+                </button>
+            </form>
+
+            <p class="auth-link">¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate gratis</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
