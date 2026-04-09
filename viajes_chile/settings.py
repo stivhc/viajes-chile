@@ -1,5 +1,8 @@
 import os
+import dj_database_url
 from pathlib import Path
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -49,16 +52,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "viajes_chile.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "viajes_chile",
-        "USER": "stivhc",
-        "PASSWORD": "paltamayo",  # ← pon tu contraseña real acá
-        "HOST": "localhost",
-        "PORT": "5432",
+if DATABASE_URL:
+    # Producción (Render)
+    DATABASES = {
+        "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "viajes_chile",
+            "USER": "stivhc",
+            "PASSWORD": "paltamayo",  # ← pon tu contraseña real acá
+            "HOST": "localhost",
+            "PORT": "5432",
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
